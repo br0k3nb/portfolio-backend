@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import routes from './routes';
 
 dotenv.config();
-
 const app = express();
 
 mongoose.set("strictQuery", true);
