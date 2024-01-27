@@ -20,7 +20,7 @@ export default new mongoose.Schema({
         },
         projectLink: {
             type: String,
-            required: true
+            required: false
         }
     },
     stackInfo: {

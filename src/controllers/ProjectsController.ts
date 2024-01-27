@@ -4,8 +4,7 @@ import Projects from '../models/ Projects';
 export default {
     async view(req: Request, res: Response) {
         try {
-            const { page } = req.params;
-            const { search, limit } = req.query
+            const { search, limit, page } = req.query
             
             const searchRegex = new RegExp(search as string, 'i');
 

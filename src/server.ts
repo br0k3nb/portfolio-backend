@@ -12,8 +12,8 @@ const app = express();
 mongoose.set("strictQuery", true);
 mongoose.connect(`${process.env.MONGODB_URL}`), (err: unknown) => err && console.log(err);
 
-app.use(bodyParser.json({}));
-app.use(cors());
+app.use(bodyParser.json({ limit: '524288000' }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
