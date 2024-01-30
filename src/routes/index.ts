@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/projects", ProjectsController.view);
 router.post("/projects/add", ProjectsController.add);
-router.put("/projects/edt", ProjectsController.edit);
-router.delete("/projects/add", ProjectsController.delete);
+router.patch("/project/edit/:id", ProjectsController.edit);
+router.delete("/project/delete/:id", ProjectsController.delete);
 
 export default router;

@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 export default new mongoose.Schema({
-    image: {
-        type: String,
+    images: {
+        type: mongoose.SchemaTypes.Mixed,
         required: true,
     },
     generalInfo: {

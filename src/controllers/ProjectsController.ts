@@ -67,10 +67,10 @@ export default {
                 return res.status(400).json({ message: "Access denied!" });
             }
 
-            const { name, description, image, stack, stackIcons, githubLink, projectLink } = req.body;
+            const { name, description, images, stack, stackIcons, githubLink, projectLink } = req.body;
 
             await Projects.create({
-                image,
+                images,
                 generalInfo: {
                     name,
                     description,
@@ -95,24 +95,14 @@ export default {
                 return res.status(400).json({ message: "Access denied!" });
             }
 
-            const { _id, name, description, image, stack, stackIcons, githubLink, projectLink } = req.body;
+            const { id } = req.params;
+            const data = req.body;
 
-            await Projects.findOneAndUpdate({ _id }, {
-                image,
-                generalInfo: {
-                    name,
-                    description,
-                    githubLink,
-                    projectLink
-                },
-                stackInfo: {
-                    stack,
-                    icons: stackIcons
-                },
-            });
+            await Projects.findOneAndUpdate({ _id: id }, data);
             
             res.status(200).json({ message: 'Project updated!' });
         } catch (err) {
+            console.log(err);
             res.status(400).json({ message: 'Error, please try again later!' });
         }
     },
@@ -123,10 +113,12 @@ export default {
             }
 
             const { id } = req.params;
+            console.log(id);
             await Projects.findByIdAndDelete(id);
             
             res.status(200).json({ message: 'Project deleted!' });
         } catch (err) {
+            console.log(err);
             res.status(400).json({ message: 'Error, please try again later!' });
         }
     }
